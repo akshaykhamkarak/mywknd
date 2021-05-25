@@ -10,6 +10,7 @@ public interface CodingChallengeInterface {
 	Boolean isCheckboolean();
 	String getSelectdropdown();
 	String getName();
+	String getPath();
 	String getFileReference();
 	
 }

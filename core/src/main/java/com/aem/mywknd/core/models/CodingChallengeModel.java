@@ -8,21 +8,33 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.day.cq.wcm.api.Page;
+
+import org.apache.sling.api.SlingHttpServletRequest;
 import org.apache.sling.api.resource.Resource;
 import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.DefaultInjectionStrategy;
 import org.apache.sling.models.annotations.Model;
 import org.apache.sling.models.annotations.Via;
+import org.apache.sling.models.annotations.injectorspecific.ScriptVariable;
 import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
 
 import jdk.internal.org.jline.utils.Log;
 
-@Model(adaptables = Resource.class, 
+@Model(adaptables = SlingHttpServletRequest.class, 
 adapters = CodingChallengeInterface.class,
 defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL)
 public class CodingChallengeModel implements CodingChallengeInterface {
-
+	
+@ScriptVariable
+Page currPage;
 	private static final Logger LOG = LoggerFactory.getLogger(CodingChallengeModel.class);
+	
+	@Inject
+	@Via("resource")
+	private String path;
+	
 	@ValueMapValue
 	private List<String> codingmultifield;
 	
@@ -31,9 +43,12 @@ public class CodingChallengeModel implements CodingChallengeInterface {
 	private Boolean checkboolean;
 	
 	@Inject
+	@Via("resource")
+	@Default(values = "aem")
 	private String name;
 	
-	@ValueMapValue
+	@Inject
+	@Via("resource")
 	private String selectdropdown;
 	
 	@ValueMapValue
@@ -69,7 +84,13 @@ public class CodingChallengeModel implements CodingChallengeInterface {
 	}
 	@PostConstruct
 	public void init() {
-		LOG.info("Hello-word"+" "+checkboolean+" "+name+""+codingmultifield);
+		LOG.info("Hello-word"+" "+checkboolean+" "+name+" "+codingmultifield);
 		
+	}
+
+	@Override
+	public String getPath() {
+		
+		return path;
 	}
 }
