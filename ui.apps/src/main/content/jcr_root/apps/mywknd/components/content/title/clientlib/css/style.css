@@ -1,0 +1,16 @@
+
+.cmp-title__text {
+ color: #EB212E;
+font-weight: 600;
+font-size: 3rem;
+border-bottom: solid 1px #ddd;
+padding-bottom: 0;
+margin-bottom: 0.25rem;
+}
+
+.cmp-body--background-color1{
+
+    background-color:blue;
+
+        }
+

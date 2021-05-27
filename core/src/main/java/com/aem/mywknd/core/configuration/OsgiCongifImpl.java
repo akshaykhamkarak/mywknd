@@ -1,5 +1,9 @@
 package com.aem.mywknd.core.configuration;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.metatype.annotations.*;
@@ -8,7 +12,6 @@ import org.slf4j.LoggerFactory;
 
 @Component(service = OsgiConfig.class,immediate = true)
 @Designate(ocd = OsgiCongifImpl.ServiceConfig.class )
-
 public class OsgiCongifImpl implements OsgiConfig {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -20,28 +23,32 @@ public class OsgiCongifImpl implements OsgiConfig {
 	                name = "Service Name",
 	                description = "Enter service name.",
 	                type = AttributeType.STRING)
-	        public String serviceName() default "AEM  Service";
+	        public String serviceName();
 
 	        @AttributeDefinition(
 	                name = "Service Count",
 	                description = "Add Service Count.",
 	                type = AttributeType.INTEGER
 	        )
-	        int getServiceCount() default 5;
+	        int getServiceCount();
 
 	        @AttributeDefinition(
 	                name = "Live Data",
 	                description = "Check this to get live data.",
 	                type = AttributeType.BOOLEAN)
-	        boolean getLiveData() default false;
+	        boolean getLiveData();
 
 	        @AttributeDefinition(
 	                name = "Countries",
 	                description = "Add countries locales for which you want to run this service.",
 	                type = AttributeType.STRING
 	        )
-	        String[] getCountries() default {"de","in"};
+	        String[] getCountries();
+	        
+	        
 
+	        
+	        
 	        @AttributeDefinition(
 	                name = "Run Modes",
 	                description = "Select Run Mode.",
@@ -51,7 +58,7 @@ public class OsgiCongifImpl implements OsgiConfig {
 	                        @Option(label = "Both",value = "both")
 	                },
 	                type = AttributeType.STRING)
-	        String getRunMode() default "both";
+	        String getRunMode();
 	    }
 
 	    private String serviceName;
@@ -59,6 +66,9 @@ public class OsgiCongifImpl implements OsgiConfig {
 	    private boolean liveData;
 	    private String[] countries;
 	    private String runModes;
+	    
+	
+
 
 	    @Activate
 	    protected void activate(ServiceConfig serviceConfig){
@@ -67,8 +77,11 @@ public class OsgiCongifImpl implements OsgiConfig {
 	        liveData=serviceConfig.getLiveData();
 	        countries=serviceConfig.getCountries();
 	        runModes=serviceConfig.getRunMode();
-	        
-	        logger.info("Orchard read the data : " +serviceName+"\n"+serviceCount+"\n"+liveData+"\n"+countries[0]+" "+countries[1]+"\n"+runModes);
+	        List<String>country=new ArrayList<>();
+	      for(String str:countries) {
+	    	  country.add(str);
+	      }
+	        logger.info("Orchard read the data : \n" +serviceName+"\n"+serviceCount+"\n"+liveData+"\n"+country+"\n"+runModes);
      
 	    }
 
@@ -92,4 +105,6 @@ public class OsgiCongifImpl implements OsgiConfig {
 	    public String getRunModes() {
 	        return runModes;
 	    }
+
+	
 }

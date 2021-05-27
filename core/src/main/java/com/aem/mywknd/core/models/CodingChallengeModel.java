@@ -82,15 +82,16 @@ Page currPage;
 	public String getName() {
 		return name;
 	}
+	@Override
+	public String getPath() {
+		
+		return path;
+	}
 	@PostConstruct
 	public void init() {
 		LOG.info("Hello-word"+" "+checkboolean+" "+name+" "+codingmultifield);
 		
 	}
 
-	@Override
-	public String getPath() {
-		
-		return path;
-	}
+
 }

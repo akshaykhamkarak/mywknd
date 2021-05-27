@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 @Component(service = OSGiConfig.class,immediate = true)
 @Designate(ocd = OSGiConfigImpl.ServiceConfig.class )
 public class OSGiConfigImpl implements OSGiConfig{
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	//private final Logger logger = LoggerFactory.getLogger(getClass());
     @ObjectClassDefinition(name="AEM Geeks - OSGi Configuration",
             description = "OSGi Configuration demo.")
     public @interface ServiceConfig {
@@ -67,7 +67,7 @@ public class OSGiConfigImpl implements OSGiConfig{
         countries=serviceConfig.getCountries();
         runModes=serviceConfig.getRunMode();
         
-        logger.info("Orchard read the data : " +serviceName+"\n"+serviceCount+"\n"+liveData+"\n"+countries[0]+" "+countries[1]+"\n"+runModes);
+      //  logger.info("Orchard read the data : " +serviceName+"\n"+serviceCount+"\n"+liveData+"\n"+countries[0]+" "+countries[1]+"\n"+runModes);
     }
 
     @Override

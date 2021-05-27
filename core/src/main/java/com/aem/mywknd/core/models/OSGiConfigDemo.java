@@ -1,8 +1,6 @@
-package com.aem.mywknd.core.configuration;
+package com.aem.mywknd.core.models;
 
-
-
-public interface OsgiConfig {
+public interface OSGiConfigDemo {
 
 	public String getServiceName();
 
@@ -13,7 +11,4 @@ public interface OsgiConfig {
 	public String[] getCountries();
 
 	public String getRunModes();
-	
-
-
 }

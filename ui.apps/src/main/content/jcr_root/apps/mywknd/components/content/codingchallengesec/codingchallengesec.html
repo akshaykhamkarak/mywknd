@@ -1,0 +1,30 @@
+<h1>==========Code Challenge second==============</h1>
+
+<div data-sly-use.fetchdata="com.aem.mywknd.core.models.CodingChallengeInterface">
+
+     <p>Name: ${fetchdata.name}</p>
+
+	<div data-sly-list=${fetchdata.codingmultifield}>
+    <p>Multifield text No: ${itemList.count} <b> ${item}</b></p>
+	</div>
+
+===============================
+
+<div data-sly-repeat="${fetchdata.codingmultifield}">
+<p>Repeat:${item}</p>
+</div>
+===============================
+<template data-sly-template.one>Template</template>
+
+<div data-sly-call="${one}"></div>
+<div data-sly-call="${one}"></div>
+===============================
+<p data-sly-text="${fetchdata.name}">Lorem ipsum</p>
+==============================
+<p>Selected from Dropdown: ${fetchdata.selectdropdown} </p>
+
+<p>Bool Value: ${fetchdata.checkboolean} </p>
+
+<p>Path to target: ${fetchdata.path}</p>
+
+</div>

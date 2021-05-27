@@ -3,4 +3,6 @@
     jcr:mixinTypes="[rep:AccessControllable,rep:RepoAccessControllable]"
     jcr:primaryType="rep:root"
     sling:resourceType="sling:redirect"
-    sling:target="/index.html"/>
+    sling:target="/index.html"
+    name="ak"
+    path="akshay"/>

@@ -1,4 +1,4 @@
-<h1>Here is the Multifield data:</h1>
+<h1>HEllo Mindtree mind</h1>
 
 <div data-sly-use.fetchdata="com.aem.mywknd.core.models.CodingChallengeInterface">
 	<div data-sly-list="${fetchdata.codingmultifield}">
@@ -6,13 +6,18 @@
 		<p>Multifield text No: ${itemList.count} <b> ${item}</b></p>
 
 <hr>
+===============================
+<div data-sly-repeat="${currentPage.listChildren}">
+     <p>Repeate:${item.name}</p>
+
+</div>
+===============================
 <p>Selected from select: ${fetchdata.selectdropdown} </p>
 
 <p>Boolean value of checkbox: ${fetchdata.checkboolean} </p>
 
 <p>Path to target: ${fetchdata.path}</p>
 
-<h1>Hello Mindtree Minds</h1>
-<h1>Hello Mindtree Minds...</h1>
+
 	</div>
 </div>

@@ -1,0 +1,12 @@
+div.textimage div.image {
+    float: left;
+    margin: 0 8px 8px 0;
+}
+
+div.textimage div.text .cq-placeholder {
+    height: 1.875rem;
+}
+
+div.textimage div.clear {
+    clear: both;
+}
